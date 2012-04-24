@@ -14,7 +14,7 @@
 
 // LCD Menu Messages
 
-	#define WELCOME_MSG "Printer Ready."
+	#define WELCOME_MSG "Tantillus"
 	#define MSG_SD_INSERTED "Card inserted"
 	#define MSG_SD_REMOVED "Card removed"
 	#define MSG_MAIN " Main \003"
@@ -82,6 +82,7 @@
 	#define MSG_PREHEAT_PLA " Preheat PLA"
 	#define MSG_PREHEAT_ABS " Preheat ABS"
 	#define MSG_STEPPER_RELEASED "Released."
+	#define MSG_BACKLIGHT "Backlight:"
 
 
 // Serial Console Messages
@@ -117,7 +118,7 @@
 	#define MSG_M115_REPORT "FIRMWARE_NAME:Marlin V1; Sprinter/grbl mashup for gen6 FIRMWARE_URL:http://www.mendel-parts.com PROTOCOL_VERSION:1.0 MACHINE_TYPE:Mendel EXTRUDER_COUNT:1\n"
 	#define MSG_COUNT_X " Count X:"
 	#define MSG_ERR_KILLED "Printer halted. kill() called !!"
-	#define MSG_ERR_STOPPED "Printer stopped deu to errors. Fix the error and use M999 to restart!. (Temperature is reset. Set it before restarting)"
+	#define MSG_ERR_STOPPED "Printer stopped due to errors. Fix the error and use M999 to restart!. (Temperature is reset. Set it before restarting)"
 	#define MSG_RESEND "Resend:"
 	#define MSG_UNKNOWN_COMMAND "Unknown command:\""
 	#define MSG_ACTIVE_EXTRUDER "Active Extruder: "
@@ -155,7 +156,7 @@
 
 // LCD Menu Messages
 
-	#define WELCOME_MSG "UltiMARLIN Ready."
+	#define WELCOME_MSG "Tantillus"
 
 	#define MSG_SD_INSERTED "Card inserted"
 	#define MSG_SD_REMOVED "Card removed"

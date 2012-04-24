@@ -36,6 +36,7 @@
 #include "watchdog.h"
 #include "EEPROMwrite.h"
 #include "language.h"
+#include "Configuration.h"
 
 #define VERSION_STRING  "1.0.0 RC2"
 
@@ -134,7 +135,12 @@ volatile int extrudemultiply=100; //100->1 200->2
 float current_position[NUM_AXIS] = { 0.0, 0.0, 0.0, 0.0 };
 float add_homeing[3]={0,0,0};
 uint8_t active_extruder = 0;
+
 unsigned char FanSpeed=0;
+
+static uint8_t lightpwm=0;
+
+static uint8_t backlightpwm=0;
 
 
 //===========================================================================
@@ -299,6 +305,10 @@ void setup()
   st_init();    // Initialize stepper;
   wd_init();
   setup_photpin();
+  
+  #ifdef BACKLIGHT
+analogWrite(BACKLIGHT_PIN,  BACKLIGHT);
+#endif
 }
 
 
@@ -995,6 +1005,45 @@ void process_commands()
         break;
     #endif //FAN_PIN
 
+ #if LIGHT_PIN > -1
+      case 306: //M306 Light On
+        if (code_seen('S')){
+            WRITE(LIGHT_PIN,HIGH);
+            lightpwm=constrain(code_value(),0,255);
+            analogWrite(LIGHT_PIN,  lightpwm);
+        }
+        else {
+          WRITE(LIGHT_PIN,HIGH);
+          lightpwm=255;
+          analogWrite(LIGHT_PIN, lightpwm);			
+        }
+        break;
+      case 307: //M307 Light Off
+        WRITE(LIGHT_PIN,LOW);
+        analogWrite(LIGHT_PIN, 0);
+        break;
+    #endif //LIGHT_PIN
+    
+    
+ #if BACKLIGHT_PIN > -1
+      case 308: //M308 Backlight On
+        if (code_seen('S')){
+            WRITE(BACKLIGHT_PIN,HIGH);
+            backlightpwm=constrain(code_value(),0,255);
+            analogWrite(BACKLIGHT_PIN,  backlightpwm);
+        }
+        else {
+          WRITE(BACKLIGHT_PIN,HIGH);
+          backlightpwm=255;
+          analogWrite(LIGHT_PIN, backlightpwm);			
+        }
+        break;
+      case 309: //M309 Backlight Off
+        WRITE(BACKLIGHT_PIN,LOW);
+        analogWrite(BACKLIGHT_PIN, 0);
+        break;
+    #endif //BACKLIGHT_PIN
+
     #if (PS_ON_PIN > -1)
       case 80: // M80 - ATX Power On
         SET_OUTPUT(PS_ON_PIN); //GND
@@ -1429,6 +1478,36 @@ void controllerFan()
 }
 #endif
 
+#ifdef AUTO_FAN_MIN
+unsigned long lastTemp = 0; //Save the last time a heater was turned on
+unsigned long lastTempCheck = 0;
+
+void auto_Fan()
+{
+  if ((millis() - lastTempCheck) >= 2500) //Not a time critical function, so we only check every 2500ms
+  {
+    lastTempCheck = millis();
+    
+    if (degHotend(active_extruder) > MIN_FAN_TEMP)
+    {
+      lastTemp = millis(); //... set time to NOW so the fan will turn on
+    }
+    
+    if ((millis() - lastTemp) >= (MIN_FAN_TIME*1000UL) || lastTemp == 0) //If the last time any driver was enabled, is longer since than CONTROLLERSEC...   
+    {
+      FanSpeed=0;  //... turn the fan off
+    }
+    else
+    {
+	if (FanSpeed < AUTO_FAN_MIN);
+	{
+      	FanSpeed=AUTO_FAN_MIN; //... turn the fan on
+	}
+    }
+  }
+}
+#endif
+
 void manage_inactivity(byte debug) 
 { 
   if( (millis() - previous_millis_cmd) >  max_inactive_time ) 
@@ -1450,6 +1529,11 @@ void manage_inactivity(byte debug)
   #ifdef CONTROLLERFAN_PIN
     controllerFan(); //Check if fan should be turned on to cool stepper drivers down
   #endif
+
+  #ifdef AUTO_FAN_MIN
+    auto_Fan(); //Check if fan should be turned on to keep thermal barrier cool
+  #endif
+
   #ifdef EXTRUDER_RUNOUT_PREVENT
     if( (millis() - previous_millis_cmd) >  EXTRUDER_RUNOUT_SECONDS*1000 ) 
     if(degHotend(active_extruder)>EXTRUDER_RUNOUT_MINTEMP)

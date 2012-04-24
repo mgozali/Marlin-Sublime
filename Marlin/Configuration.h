@@ -31,7 +31,7 @@
 // Gen3+ =9
 
 #ifndef MOTHERBOARD
-#define MOTHERBOARD 7
+#define MOTHERBOARD 3
 #endif
 
 //===========================================================================
@@ -50,13 +50,13 @@
 // 6 is EPCOS 100k
 // 7 is 100k Honeywell thermistor 135-104LAG-J01
 
-#define TEMP_SENSOR_0 -1
+#define TEMP_SENSOR_0 1
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 0
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 10	// (seconds)
+#define TEMP_RESIDENCY_TIME 0.1	// (seconds)
 #define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
 
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
@@ -78,7 +78,7 @@
 
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
-#define PIDTEMP
+//#define PIDTEMP
 #define PID_MAX 255 // limits current to nozzle; 255=full current
 #ifdef PIDTEMP
   //#define PID_DEBUG // Sends debug data to the serial port. 
@@ -120,7 +120,7 @@
 // The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
 const bool X_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
 const bool Y_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
-const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of the endstops. 
+const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
 //#define DISABLE_MAX_ENDSTOPS
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
@@ -135,9 +135,9 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 #define DISABLE_Z false
 #define DISABLE_E false // For all extruders
 
-#define INVERT_X_DIR true    // for Mendel set to false, for Orca set to true
+#define INVERT_X_DIR false    // for Mendel set to false, for Orca set to true
 #define INVERT_Y_DIR false    // for Mendel set to true, for Orca set to false
-#define INVERT_Z_DIR true     // for Mendel set to false, for Orca set to true
+#define INVERT_Z_DIR false     // for Mendel set to false, for Orca set to true
 #define INVERT_E0_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E2_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
@@ -150,9 +150,9 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 #define min_software_endstops true //If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
-#define X_MAX_LENGTH 205
-#define Y_MAX_LENGTH 205
-#define Z_MAX_LENGTH 200
+#define X_MAX_LENGTH 100
+#define Y_MAX_LENGTH 100
+#define Z_MAX_LENGTH 100
 
 // The position of the homing switches. Use MAX_LENGTH * -0.5 if the center should be 0, 0, 0
 #define X_HOME_POS 0
@@ -165,17 +165,17 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {78.7402,78.7402,200*8/3,760*1.1}  // default steps per unit for ultimaker 
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 45}    // (mm/sec)    
-#define DEFAULT_MAX_ACCELERATION      {9000,9000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {61.25,61.25,322.187*2,526.271}  //494.288
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 15, 40}    // (mm/sec)    
+#define DEFAULT_MAX_ACCELERATION      {9000,9000,300,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
-#define DEFAULT_RETRACT_ACCELERATION  3000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
+#define DEFAULT_RETRACT_ACCELERATION  4000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
 #define DEFAULT_XYJERK                20.0    // (mm/sec)
-#define DEFAULT_ZJERK                 0.4     // (mm/sec)
-#define DEFAULT_EJERK                 5.0    // (mm/sec)
+#define DEFAULT_ZJERK                 5.0     // (mm/sec)
+#define DEFAULT_EJERK                 10.0    // (mm/sec)
 
 //===========================================================================
 //=============================Additional Features===========================
@@ -196,31 +196,31 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 //#define ULTRA_LCD  //general lcd support, also 16x2
 //#define SDSUPPORT // Enable SD Card Support in Hardware Console
 
-//#define ULTIMAKERCONTROLLER //as available from the ultimaker online store.
-//#define ULTIPANEL  //the ultipanel as on thingiverse
-
-
-#ifdef ULTIMAKERCONTROLLER    //automatic expansion
- #define ULTIPANEL
- #define NEWPANEL
-#endif 
- 
-
+//#define ULTIPANEL
 #ifdef ULTIPANEL
-//  #define NEWPANEL  //enable this if you have a click-encoder panel
+#define NEWPANEL  //enable this if you have a click-encoder panel
   #define SDSUPPORT
   #define ULTRA_LCD
   #define LCD_WIDTH 20
   #define LCD_HEIGHT 4
   
 // Preheat Constants
+
+#define PREHEAT_PLA
+#define PREHEAT_ABS
+
+
+#ifdef PREHEAT_PLA
   #define PLA_PREHEAT_HOTEND_TEMP 180 
   #define PLA_PREHEAT_HPB_TEMP 70
   #define PLA_PREHEAT_FAN_SPEED 255		// Insert Value between 0 and 255
+#endif
 
+  #ifdef PREHEAT_ABS
   #define ABS_PREHEAT_HOTEND_TEMP 240
   #define ABS_PREHEAT_HPB_TEMP 100
   #define ABS_PREHEAT_FAN_SPEED 255		// Insert Value between 0 and 255
+#endif
 
 #else //no panel but just lcd 
   #ifdef ULTRA_LCD
@@ -228,6 +228,43 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
     #define LCD_HEIGHT 2    
   #endif
 #endif
+
+
+
+#define TANTILLUS
+
+#ifdef TANTILLUS
+  #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through menu
+  #define AUTO_FAN_MIN 250      // Minimum speed to keep the fan at (value 0 - 255)
+  #define MIN_FAN_TEMP 50       // Temperature to turn the fan on at
+  #define MIN_FAN_TIME 30       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
+  
+  #define ULTIPANEL
+  #define NEWPANEL
+  #define SDSUPPORT
+  #define ULTRA_LCD
+  #define LCD_WIDTH 16
+  #define LCD_HEIGHT 2
+
+  #define PREHEAT_PLA
+//#define PREHEAT_ABS
+
+
+  #ifdef PREHEAT_PLA
+    #define PLA_PREHEAT_HOTEND_TEMP 190 
+    #define PLA_PREHEAT_HPB_TEMP 60
+    #define PLA_PREHEAT_FAN_SPEED 255	
+  #endif
+
+  #ifdef PREHEAT_ABS
+    #define ABS_PREHEAT_HOTEND_TEMP 240
+    #define ABS_PREHEAT_HPB_TEMP 100
+    #define ABS_PREHEAT_FAN_SPEED 255
+  #endif
+
+#endif
+
+
 
 // M240  Triggers a camera by emulating a Canon RC-1 Remote
 // Data from: http://www.doc-diy.net/photo/rc-1_hacked/
