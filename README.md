@@ -1,4 +1,4 @@
-Tantillus specific version of Marln firmware
+Tantillus specific version of Marlin firmware
 ============================================
 
 * Added automatic fan enabling that turns the fan on whenever the hotend is above the specified temperature to a specified speed.
