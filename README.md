@@ -1,5 +1,9 @@
 Tantillus specific version of Marlin firmware
-============================================
+---------------------------------------------
+
+
+Additions and changes:
+----------------------
 
 * Added automatic fan enabling that turns the fan on whenever the hotend is above the specified temperature to a specified speed.
 (keeps the fan running for specified time after cool down, allows M106 to override as long as the hotend is warm).
@@ -9,8 +13,7 @@ Tantillus specific version of Marlin firmware
 * Added backlight control for LCD via M308 S(nnn) M309 (pin currently undefined except RAMPS).
 
 * Added better support for 16 x 2 LCD panel. 
-(moved completion status to second line, shortened some titles, moved some content to the 
-left for 16 character wide display, rearranged prepare menu, added brightness control for LCD).
+(enabled scrolling in main menu, moved completion status to second line, shortened some titles, moved some content to the left for 16 character wide display, rearranged prepare menu, added brightness control for LCD).
 
 * Simplified selection of Tantillus config options.
 
@@ -20,7 +23,10 @@ left for 16 character wide display, rearranged prepare menu, added brightness co
 
 * All settings preconfigured for Tantillus.
 
-============================================
+* Uses relative extrusion. ( Marlin default is Absolute )
+
+
+
 
 
 

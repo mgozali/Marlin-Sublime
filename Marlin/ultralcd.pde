@@ -315,7 +315,7 @@ void MainMenu::showStatus()
 #if LCD_HEIGHT==4
   static int olddegHotEnd0=-1;
   static int oldtargetHotEnd0=-1;
-  force_lcd_update=true;
+// force_lcd_update=true;
   if(force_lcd_update)  //initial display of content
   {
     encoderpos=feedmultiply;
@@ -911,7 +911,7 @@ void MainMenu::showTune()
         }
         if(linechanging)
         {
-          if(encoderpos<248) encoderpos=248;
+          if(encoderpos<0) encoderpos=0;
           if(encoderpos>255) encoderpos=255;
           FanSpeed=encoderpos;
             analogWrite(FAN_PIN,  FanSpeed);
@@ -1234,7 +1234,7 @@ void MainMenu::showControlTemp()
         }
         if(linechanging)
         {
-          if(encoderpos<248) encoderpos=248;
+          if(encoderpos<0) encoderpos=0;
           if(encoderpos>255) encoderpos=255;
           FanSpeed=encoderpos;
             analogWrite(FAN_PIN,  FanSpeed);

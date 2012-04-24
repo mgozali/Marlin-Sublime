@@ -198,7 +198,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 //#define ULTIPANEL
 #ifdef ULTIPANEL
-#define NEWPANEL  //enable this if you have a click-encoder panel
+//#define NEWPANEL  //enable this if you have a click-encoder panel
   #define SDSUPPORT
   #define ULTRA_LCD
   #define LCD_WIDTH 20
