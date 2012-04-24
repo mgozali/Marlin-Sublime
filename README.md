@@ -1,3 +1,29 @@
+Tantillus specific version of Marln firmware
+============================================
+
+* Added automatic fan enabling that turns the fan on whenever the hotend is above the specified temperature to a specified speed.
+(keeps the fan running for specified time after cool down, allows M106 to override as long as the hotend is warm).
+
+* Added light control for interior lighting via M306 S(nnn) M307 (pin currently undefined except RAMPS).
+
+* Added backlight control for LCD via M308 S(nnn) M309 (pin currently undefined except RAMPS).
+
+* Added better support for 16 x 2 LCD panel. 
+(moved completion status to second line, shortened some titles, moved some content to the 
+left for 16 character wide display, rearranged prepare menu, added brightness control for LCD).
+
+* Simplified selection of Tantillus config options.
+
+* PID disabled by default.
+
+* Added defines for preheat in configuration.h that remove the option from the LCD menu when not in use.
+
+* All settings preconfigured for Tantillus.
+
+============================================
+
+
+
 WARNING: 
 --------
 THIS IS RELEASE CANDIDATE 2 FOR MARLIN 1.0.0
