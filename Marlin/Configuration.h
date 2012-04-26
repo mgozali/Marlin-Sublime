@@ -56,7 +56,7 @@
 #define TEMP_SENSOR_BED 0
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 0.1	// (seconds)
+#define TEMP_RESIDENCY_TIME 15	// (seconds)
 #define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
 
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
@@ -108,7 +108,10 @@
 //can be software-disabled for whatever purposes by
 #define PREVENT_DANGEROUS_EXTRUDE
 #define EXTRUDE_MINTEMP 170
+
+
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
+
 
 //===========================================================================
 //=============================Mechanical Settings===========================
@@ -174,7 +177,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // 
 #define DEFAULT_XYJERK                20.0    // (mm/sec)
-#define DEFAULT_ZJERK                 5.0     // (mm/sec)
+#define DEFAULT_ZJERK                 4.0     // (mm/sec)
 #define DEFAULT_EJERK                 10.0    // (mm/sec)
 
 //===========================================================================
@@ -231,7 +234,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 
 
-#define TANTILLUS
+#define TANTILLUS               // Adds 1546k over Ultipanel with click encoder
 
 #ifdef TANTILLUS
   #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through menu
@@ -245,6 +248,9 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
   #define ULTRA_LCD
   #define LCD_WIDTH 16
   #define LCD_HEIGHT 2
+
+  #define EASY_LOAD             // Add load/unload to LCD control panel ***caution*** Allows long extrusion distances (buttons request 650mm)
+  #define BOWDEN_LENGTH 650     // Sets max extrusion length ***caution*** Allows long extrusion distances (buttons request 650mm)
 
   #define PREHEAT_PLA
 //#define PREHEAT_ABS

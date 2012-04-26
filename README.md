@@ -25,6 +25,10 @@ Additions and changes:
 
 * Uses relative extrusion. ( Marlin default is Absolute )
 
+* LCD home command sends X and Y back to X0 and Y0 and uses the endstop to find Z0
+
+* Added easyload option to LCD to Load / Unload the filament without the need of a computer. (for Bowden Cables)
+
 
 
 

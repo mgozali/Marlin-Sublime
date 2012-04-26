@@ -15,12 +15,19 @@
 // LCD Menu Messages
 
 	#define WELCOME_MSG "Tantillus"
+	#define MSG_E650 " Extrude 650mm's"
+	#define MSG_R650 " Retract 650mm's"
+	#define MSG_LOAD " Load Filament"
+	#define MSG_UNLOAD " Unload Filament"
+	#define MSG_NO " NO"
+	#define MSG_YES " YES"
+
 	#define MSG_SD_INSERTED "Card inserted"
 	#define MSG_SD_REMOVED "Card removed"
 	#define MSG_MAIN " Main \003"
 	#define MSG_AUTOSTART " Autostart"
 	#define MSG_DISABLE_STEPPERS " Disable Steppers"
-	#define MSG_AUTO_HOME " Auto Home"
+	#define MSG_AUTO_HOME " Home"
 	#define MSG_SET_ORIGIN " Set Origin"
 	#define MSG_COOLDOWN " Cooldown"
 	#define MSG_EXTRUDE " Extrude"
@@ -157,13 +164,19 @@
 // LCD Menu Messages
 
 	#define WELCOME_MSG "Tantillus"
+	#define MSG_E650 " Extrude 650mm's"
+	#define MSG_R650 " Retract 650mm's"
+	#define MSG_LOAD " Load Filament"
+	#define MSG_UNLOAD " Unload Filament"
+	#define MSG_NO " NO"
+	#define MSG_YES " YES"
 
 	#define MSG_SD_INSERTED "Card inserted"
 	#define MSG_SD_REMOVED "Card removed"
 	#define MSG_MAIN " Main \003"
 	#define MSG_AUTOSTART " Autostart"
 	#define MSG_DISABLE_STEPPERS " Stepper abschalten"
-	#define MSG_AUTO_HOME " Auto Heim"
+	#define MSG_AUTO_HOME " Heim"
 	#define MSG_SET_ORIGIN " Position setzen"
 	#define MSG_PREHEAT_PLA " Aufheizen PLA"
 	#define MSG_PREHEAT_ABS " Aufheizen ABS"
