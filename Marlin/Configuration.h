@@ -234,10 +234,10 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 
 
-#define TANTILLUS               // Adds 1546k over Ultipanel with click encoder
+#define TANTILLUS               // 
 
 #ifdef TANTILLUS
-  #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through menu
+  #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu
   #define AUTO_FAN_MIN 250      // Minimum speed to keep the fan at (value 0 - 255)
   #define MIN_FAN_TEMP 50       // Temperature to turn the fan on at
   #define MIN_FAN_TIME 30       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP

@@ -540,8 +540,6 @@ void MainMenu::showPrepare()
 #endif
       enquecommand("G28");beepshort(); ) ;
       break;
-
-//****************************************************************************************************
 #ifdef EASY_LOAD
     case ItemP_load:
       MENUITEM(  lcdprintPGM(MSG_LOAD) , BLOCK;status=Sub_PrepareLoad;beepshort(); );
@@ -551,9 +549,6 @@ void MainMenu::showPrepare()
       MENUITEM(  lcdprintPGM(MSG_UNLOAD) , BLOCK;status=Sub_PrepareUnload;beepshort(); );
       break;
 #endif
-//***************************************************************************************************
-
-
     case ItemP_move:
       MENUITEM(  lcdprintPGM(MSG_MOVE_AXIS) , BLOCK;status=Sub_PrepareMove;beepshort(); );
       break;
@@ -619,8 +614,6 @@ void MainMenu::showPrepare()
 #endif
 }
 
-
-//****************************************************************************************************
 enum {ItemL_title,ItemL_exit,ItemL_Load};
 
 
@@ -628,7 +621,7 @@ void MainMenu::showLoad()
 {
 #ifdef EASY_LOAD
  uint8_t line=0;
-
+ char loadtmp[16] = ""; 
  clearIfNecessary();
  for(int8_t i=lineoffset;i<lineoffset+LCD_HEIGHT;i++)
  {
@@ -642,7 +635,8 @@ void MainMenu::showLoad()
       MENUITEM(  lcdprintPGM(MSG_NO)  ,  BLOCK;status=Main_Menu;beepshort(); ) ;
       break;
      case ItemL_Load:
-      MENUITEM(  lcdprintPGM(MSG_YES)  ,  BLOCK;enquecommand("G1 F900 E650");beepshort(); ) ;
+      sprintf(loadtmp, "G1 F900 E%d", BOWDEN_LENGTH);
+      MENUITEM(  lcdprintPGM(MSG_YES)  ,  BLOCK;enquecommand(loadtmp);beepshort(); ) ;
       break;
    }
   line++;
@@ -658,7 +652,7 @@ void MainMenu::showUnload()
 {
 #ifdef EASY_LOAD
  uint8_t line=0;
-
+ char unloadtmp[16] = ""; 
  clearIfNecessary();
  for(int8_t i=lineoffset;i<lineoffset+LCD_HEIGHT;i++)
  {
@@ -672,7 +666,8 @@ void MainMenu::showUnload()
       MENUITEM(  lcdprintPGM(MSG_NO)  ,  BLOCK;status=Main_Menu;beepshort(); ) ;
       break;
      case ItemUL_Unload:
-      MENUITEM(  lcdprintPGM(MSG_YES)  ,  BLOCK;enquecommand("G1 F900 E-650");beepshort(); ) ;
+      sprintf(unloadtmp, "G1 F900 E-%d", BOWDEN_LENGTH);
+      MENUITEM(  lcdprintPGM(MSG_YES)  ,  BLOCK;enquecommand(unloadtmp);beepshort(); ) ;
       break;
    }
   line++;
@@ -680,11 +675,6 @@ void MainMenu::showUnload()
    updateActiveLines(ItemUL_Unload,encoderpos);
 #endif
 }
-   
-//***************************************************************************************************
-
-
-
 
 enum {
   ItemAM_exit,
@@ -2295,7 +2285,7 @@ void MainMenu::update()
       {        
             showAxisMove();
       }break;
-//*******************************   
+  
 #ifdef EASY_LOAD   
       case Sub_PrepareLoad:
       {        
@@ -2306,7 +2296,7 @@ void MainMenu::update()
             showUnload();
       }break;
 #endif
-//******************************
+
       case Main_Control:
       {
         showControl(); 
