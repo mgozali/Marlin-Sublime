@@ -109,7 +109,6 @@
 #define PREVENT_DANGEROUS_EXTRUDE
 #define EXTRUDE_MINTEMP 170
 
-
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 
@@ -168,7 +167,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {61.25,61.25,322.187*2,526.271}  //494.288
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,1050}
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 15, 40}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,300,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
@@ -239,8 +238,8 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #ifdef TANTILLUS
   #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu
   #define AUTO_FAN_MIN 250      // Minimum speed to keep the fan at (value 0 - 255)
-  #define MIN_FAN_TEMP 50       // Temperature to turn the fan on at
-  #define MIN_FAN_TIME 30       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
+  #define MIN_FAN_TEMP 80       // Temperature to turn the fan on at
+  #define MIN_FAN_TIME 45       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
   
   #define ULTIPANEL
   #define NEWPANEL
@@ -249,8 +248,8 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
   #define LCD_WIDTH 16
   #define LCD_HEIGHT 2
 
-  #define EASY_LOAD             // Add load/unload to LCD control panel ***caution*** Allows long extrusion distances (buttons request 650mm)
-  #define BOWDEN_LENGTH 650     // Sets max extrusion length ***caution*** Allows long extrusion distances (buttons request 650mm)
+  #define EASY_LOAD             // Add load/unload to LCD control panel ***caution*** Allows long extrusion distances
+  #define BOWDEN_LENGTH 650     // Sets max extrusion length ***caution*** Allows long extrusion distances
 
   #define PREHEAT_PLA
 //#define PREHEAT_ABS
