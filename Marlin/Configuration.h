@@ -31,7 +31,7 @@
 // Gen3+ =9
 
 #ifndef MOTHERBOARD
-#define MOTHERBOARD 3
+#define MOTHERBOARD 34
 #endif
 
 //===========================================================================
