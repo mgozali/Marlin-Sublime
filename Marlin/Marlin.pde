@@ -1500,7 +1500,7 @@ unsigned long lastTempCheck = 0;
 
 void auto_Fan()
 {
-  if ((millis() - lastTempCheck) >= 2500) //Not a time critical function, so we only check every 2500ms
+  if ((millis() - lastTempCheck) >= 10000) //Not a time critical function, so we only check every 10000ms
   {
     lastTempCheck = millis();
     
@@ -1509,7 +1509,7 @@ void auto_Fan()
       lastTemp = millis(); //... set time to NOW so the fan will turn on
     }
     
-    if ((millis() - lastTemp) >= (MIN_FAN_TIME*1000UL) || lastTemp == 0) //If the last time any driver was enabled, is longer since than CONTROLLERSEC...   
+    if ((millis() - lastTemp) >= (MIN_FAN_TIME*1000UL) || lastTemp == 0) // 
     {
       FanSpeed=0;  //... turn the fan off
     }

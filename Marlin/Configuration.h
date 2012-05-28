@@ -12,8 +12,8 @@
 #define STRING_CONFIG_H_AUTHOR "erik" //Who made the changes.
 
 // This determines the communication speed of the printer
-#define BAUDRATE 250000
-//#define BAUDRATE 115200
+//#define BAUDRATE 250000
+#define BAUDRATE 115200
 
 //// The following define selects which electronics board you have. Please choose the one that matches your setup
 // Gen7 custom (Alfons3 Version) = 10 "https://github.com/Alfons3/Generation_7_Electronics"
@@ -31,7 +31,7 @@
 // Gen3+ =9
 
 #ifndef MOTHERBOARD
-#define MOTHERBOARD 34
+#define MOTHERBOARD 3
 #endif
 
 //===========================================================================
@@ -56,8 +56,8 @@
 #define TEMP_SENSOR_BED 0
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 15	// (seconds)
-#define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
+#define TEMP_RESIDENCY_TIME 10	// (seconds)
+#define TEMP_HYSTERESIS 4       // (degC) range of +/- temperatures considered "close" to the target one
 
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
 // to check that the wiring to the thermistor is not broken. 
@@ -167,17 +167,17 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,1050}
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 15, 40}    // (mm/sec)    
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,310}// herringbone 3.3:1 normal 2.7:1
+#define DEFAULT_MAX_FEEDRATE          {300, 300, 15, 40}    // (mm/sec)    
 #define DEFAULT_MAX_ACCELERATION      {9000,9000,300,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
-#define DEFAULT_RETRACT_ACCELERATION  4000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
+#define DEFAULT_RETRACT_ACCELERATION  10000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
 #define DEFAULT_XYJERK                20.0    // (mm/sec)
 #define DEFAULT_ZJERK                 4.0     // (mm/sec)
-#define DEFAULT_EJERK                 10.0    // (mm/sec)
+#define DEFAULT_EJERK                 20.0    // (mm/sec)
 
 //===========================================================================
 //=============================Additional Features===========================
@@ -208,8 +208,8 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
   
 // Preheat Constants
 
-#define PREHEAT_PLA
-#define PREHEAT_ABS
+  #define PREHEAT_PLA           // Comment out to remove PLA pre-heat option from LCD menu
+  #define PREHEAT_ABS           // Comment out to remove ABS pre-heat option from LCD menu
 
 
 #ifdef PREHEAT_PLA
@@ -233,11 +233,11 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 
 
-#define TANTILLUS               // 
+#define TANTILLUS               // Tantillus special features
 
 #ifdef TANTILLUS
-  #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu
-  #define AUTO_FAN_MIN 250      // Minimum speed to keep the fan at (value 0 - 255)
+//#define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu
+  #define AUTO_FAN_MIN 80       // Minimum speed to keep the fan at (value 0 - 255)
   #define MIN_FAN_TEMP 80       // Temperature to turn the fan on at
   #define MIN_FAN_TIME 45       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
   
@@ -249,14 +249,14 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
   #define LCD_HEIGHT 2
 
   #define EASY_LOAD             // Add load/unload to LCD control panel ***caution*** Allows long extrusion distances
-  #define BOWDEN_LENGTH 650     // Sets max extrusion length ***caution*** Allows long extrusion distances
+  #define BOWDEN_LENGTH 850     // Sets max extrusion length ***caution*** Allows long extrusion distances
 
-  #define PREHEAT_PLA
-//#define PREHEAT_ABS
+  #define PREHEAT_PLA           // Comment out to remove PLA pre-heat option from LCD menu
+//#define PREHEAT_ABS           // Comment out to remove ABS pre-heat option from LCD menu
 
 
   #ifdef PREHEAT_PLA
-    #define PLA_PREHEAT_HOTEND_TEMP 190 
+    #define PLA_PREHEAT_HOTEND_TEMP 200 
     #define PLA_PREHEAT_HPB_TEMP 60
     #define PLA_PREHEAT_FAN_SPEED 255	
   #endif
