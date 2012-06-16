@@ -90,6 +90,7 @@
 	#define MSG_PREHEAT_ABS " Preheat ABS"
 	#define MSG_STEPPER_RELEASED "Released."
 	#define MSG_BACKLIGHT "Backlight:"
+	#define MSG_LIGHT "Lighting:"
 
 
 // Serial Console Messages
@@ -241,6 +242,8 @@
 	#define MSG_PREHEAT_PLA " Preheat PLA"
 	#define MSG_PREHEAT_ABS " Preheat ABS"
 	#define MSG_STEPPER_RELEASED "Released."
+	#define MSG_BACKLIGHT "Backlight:"
+	#define MSG_LIGHT "Lighting:"
 
 
 // Serial Console Messages

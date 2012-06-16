@@ -8,8 +8,8 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-02-25" //Personal revision number for changes to THIS file.
-#define STRING_CONFIG_H_AUTHOR "erik" //Who made the changes.
+#define STRING_VERSION_CONFIG_H "2012-06-01" //Personal revision number for changes to THIS file.
+#define STRING_CONFIG_H_AUTHOR "Sublime" //Who made the changes.
 
 // This determines the communication speed of the printer
 //#define BAUDRATE 250000
@@ -31,7 +31,7 @@
 // Gen3+ =9
 
 #ifndef MOTHERBOARD
-#define MOTHERBOARD 3
+#define MOTHERBOARD 33
 #endif
 
 //===========================================================================
@@ -167,17 +167,17 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,310}// herringbone 3.3:1 normal 2.7:1
-#define DEFAULT_MAX_FEEDRATE          {300, 300, 15, 40}    // (mm/sec)    
-#define DEFAULT_MAX_ACCELERATION      {9000,9000,300,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,310}//extruder default steps for herringbone 3.3:1 (400), normal 2.7:1 (310)
+#define DEFAULT_MAX_FEEDRATE          {200, 200, 15, 40}    // (mm/sec)    
+#define DEFAULT_MAX_ACCELERATION      {9000,9000,300,12000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
-#define DEFAULT_RETRACT_ACCELERATION  10000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
+#define DEFAULT_RETRACT_ACCELERATION  12000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
 #define DEFAULT_XYJERK                20.0    // (mm/sec)
 #define DEFAULT_ZJERK                 4.0     // (mm/sec)
-#define DEFAULT_EJERK                 20.0    // (mm/sec)
+#define DEFAULT_EJERK                 30.0    // (mm/sec)
 
 //===========================================================================
 //=============================Additional Features===========================
@@ -236,8 +236,9 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define TANTILLUS               // Tantillus special features
 
 #ifdef TANTILLUS
-//#define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu
-  #define AUTO_FAN_MIN 80       // Minimum speed to keep the fan at (value 0 - 255)
+  #define LIGHT 128             // Default level to keep lighting at (comment out if not in use)
+  #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu (comment out if not in use)
+  #define AUTO_FAN_MIN 128       // Minimum speed to keep the fan at (value 0 - 255) (comment out if not in use)
   #define MIN_FAN_TEMP 80       // Temperature to turn the fan on at
   #define MIN_FAN_TIME 45       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
   

@@ -490,7 +490,7 @@ ItemP_cooldown, ItemP_home,
 #ifdef EASY_LOAD
 ItemP_load, ItemP_unload,
 #endif
- ItemP_move, ItemP_disstep, ItemP_backlight, ItemP_origin, ItemP_autostart, /*ItemP_extrude,*/};
+ ItemP_move, ItemP_disstep, ItemP_backlight, ItemP_light, ItemP_origin, ItemP_autostart, /*ItemP_extrude,*/};
 
 //any action must not contain a ',' character anywhere, or this breaks:
 #define MENUITEM(repaint_action, click_action) \
@@ -587,6 +587,43 @@ void MainMenu::showPrepare()
           if(encoderpos>192) encoderpos=192;
           backlightpwm=encoderpos;
             analogWrite(BACKLIGHT_PIN,  backlightpwm);
+          lcd.setCursor(13,line);lcd.print(itostr3(encoderpos));
+        }
+        
+      }break;
+#endif
+#ifdef LIGHT
+      case ItemP_light:
+      {
+        if(force_lcd_update)
+        {
+          lcd.setCursor(1,line);lcdprintPGM(MSG_LIGHT);
+          lcd.setCursor(13,line);lcd.print(ftostr3(lightpwm));
+        }
+        
+        if((activeline!=line) )
+          break;
+        
+        if(CLICKED) //analogWrite(LIGHT_PIN,  lightpwm);
+        {
+          linechanging=!linechanging;
+          if(linechanging)
+          {
+              encoderpos=lightpwm;
+          }
+          else
+          {
+            encoderpos=activeline*lcdslow;
+            beepshort();
+          }
+          BLOCK;
+        }
+        if(linechanging)
+        {
+          if(encoderpos<10) encoderpos=10;
+          if(encoderpos>192) encoderpos=192;
+          lightpwm=encoderpos;
+            analogWrite(LIGHT_PIN,  lightpwm);
           lcd.setCursor(13,line);lcd.print(itostr3(encoderpos));
         }
         

@@ -309,6 +309,9 @@ void setup()
   #ifdef BACKLIGHT
 analogWrite(BACKLIGHT_PIN,  BACKLIGHT);
 #endif
+ #ifdef LIGHT
+analogWrite(LIGHT_PIN,  LIGHT);
+#endif
 }
 
 
