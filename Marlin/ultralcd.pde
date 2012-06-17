@@ -1011,7 +1011,7 @@ void MainMenu::showTune()
         if((activeline!=line) )
           break;
         
-        if(CLICKED) //nalogWrite(FAN_PIN,  fanpwm);
+        if(CLICKED) //analogWrite(FAN_PIN,  fanpwm);
         {
           linechanging=!linechanging;
           if(linechanging)
@@ -1040,7 +1040,7 @@ void MainMenu::showTune()
       if(force_lcd_update)
         {
           lcd.setCursor(0,line);lcdprintPGM(MSG_FLOW);
-          lcd.setCursor(13,line);lcd.print(itostr4(axis_steps_per_unit[3]));
+          lcd.setCursor(12,line);lcd.print(itostr4(axis_steps_per_unit[3]));
         }
         
         if((activeline!=line) )
@@ -1069,7 +1069,7 @@ void MainMenu::showTune()
         {
           if(encoderpos<5) encoderpos=5;
           if(encoderpos>9999) encoderpos=9999;
-          lcd.setCursor(13,line);lcd.print(itostr4(encoderpos));
+          lcd.setCursor(12,line);lcd.print(itostr4(encoderpos));
         }
         
       }break; 

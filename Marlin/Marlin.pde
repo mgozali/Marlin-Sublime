@@ -1518,9 +1518,9 @@ void auto_Fan()
     }
     else
     {
-	if (FanSpeed < AUTO_FAN_MIN);
+	if ((degHotend(active_extruder) > MIN_FAN_TEMP) && (FanSpeed < AUTO_FAN_MIN))
 	{
-      	FanSpeed=AUTO_FAN_MIN; //... turn the fan on
+       	FanSpeed=AUTO_FAN_MIN; //... turn the fan on
 	}
     }
   }
