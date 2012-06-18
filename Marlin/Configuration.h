@@ -168,16 +168,16 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // default settings 
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,310}//extruder default steps for herringbone 3.3:1 (400), normal 2.7:1 (310)
-#define DEFAULT_MAX_FEEDRATE          {200, 200, 15, 40}    // (mm/sec)    
-#define DEFAULT_MAX_ACCELERATION      {9000,9000,300,12000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_FEEDRATE          {170, 170, 15, 40}    // (mm/sec)    
+#define DEFAULT_MAX_ACCELERATION      {8000,8000,300,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
-#define DEFAULT_RETRACT_ACCELERATION  12000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
+#define DEFAULT_RETRACT_ACCELERATION  50000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
-#define DEFAULT_XYJERK                20.0    // (mm/sec)
+#define DEFAULT_XYJERK                10.0    // (mm/sec)
 #define DEFAULT_ZJERK                 4.0     // (mm/sec)
-#define DEFAULT_EJERK                 30.0    // (mm/sec)
+#define DEFAULT_EJERK                 50.0    // (mm/sec)
 
 //===========================================================================
 //=============================Additional Features===========================
