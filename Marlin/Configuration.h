@@ -1,7 +1,7 @@
 #ifndef __CONFIGURATION_H
 #define __CONFIGURATION_H
 
-// This configurtion file contains the basic settings.
+// This configuration file contains the basic settings.
 // Advanced settings can be found in Configuration_adv.h 
 // BASIC SETTINGS: select your board type, temperature sensor type, axis scaling, and endstop configuration
 
@@ -137,20 +137,20 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define X_ENABLE_ON 0
 #define Y_ENABLE_ON 0
 #define Z_ENABLE_ON 0
-#define E_ENABLE_ON 0 // For all extruders
+#define E_ENABLE_ON 0 
 
 // Disables axis when it's not being used.
 #define DISABLE_X false
 #define DISABLE_Y false
 #define DISABLE_Z false
-#define DISABLE_E false // For all extruders
+#define DISABLE_E false 
 
-#define INVERT_X_DIR false    // for Mendel set to false, for Orca set to true
-#define INVERT_Y_DIR false    // for Mendel set to true, for Orca set to false
-#define INVERT_Z_DIR false     // for Mendel set to false, for Orca set to true
-#define INVERT_E0_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
-#define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
-#define INVERT_E2_DIR false   // for direct drive extruder v9 set to true, for geared extruder set to false
+#define INVERT_X_DIR false    
+#define INVERT_Y_DIR false    
+#define INVERT_Z_DIR false     
+#define INVERT_E0_DIR false 
+#define INVERT_E1_DIR false  
+#define INVERT_E2_DIR false  
 
 // ENDSTOP SETTINGS:
 // Sets direction of endstops when homing; 1=MAX, -1=MIN
@@ -175,17 +175,17 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,310}//extruder default steps for herringbone 3.3:1 (400), normal 2.7:1 (310)
-#define DEFAULT_MAX_FEEDRATE          {170, 170, 15, 40}    // (mm/sec)    
-#define DEFAULT_MAX_ACCELERATION      {8000,8000,300,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,350}//extruder default steps for herringbone 3.3:1 (400), normal 2.7:1 (310)
+#define DEFAULT_MAX_FEEDRATE          {170, 170, 15, 55}        // (mm/sec)  30 max for herringbone gears  
+#define DEFAULT_MAX_ACCELERATION      {8000,8000,300,10000}     // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
-#define DEFAULT_RETRACT_ACCELERATION  50000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
+#define DEFAULT_RETRACT_ACCELERATION  10000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
-#define DEFAULT_XYJERK                10.0    // (mm/sec)
-#define DEFAULT_ZJERK                 4.0     // (mm/sec)
-#define DEFAULT_EJERK                 50.0    // (mm/sec)
+#define DEFAULT_XYJERK                10.0     // (mm/sec)
+#define DEFAULT_ZJERK                 4.0      // (mm/sec)
+#define DEFAULT_EJERK                 100.0    // (mm/sec)
 
 //===========================================================================
 //=============================Additional Features===========================
@@ -193,7 +193,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // EEPROM
 // the microcontroller can store settings in the EEPROM, e.g. max velocity...
-// M500 - stores paramters in EEPROM
+// M500 - stores parameters in EEPROM
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).  
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
 //define this to enable eeprom support

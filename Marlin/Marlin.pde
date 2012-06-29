@@ -58,7 +58,7 @@
 //RepRap M Codes
 // M104 - Set extruder target temp
 // M105 - Read current temp
-// M106 - Fan on
+// M106 - Fan on: use s parameter to set speed from 0% - 100%
 // M107 - Fan off
 // M109 - Wait for extruder current temp to reach target temp.
 // M114 - Display current position
@@ -105,6 +105,10 @@
 // M240 - Trigger a camera to take a photograph
 // M301 - Set PID parameters P I and D
 // M302 - Allow cold extrudes
+// M306 - Light on: use s parameter to set brightness from 0% - 100%
+// M307 - Light off
+// M308 - Backlight on: use s parameter to set brightness from 0% - 100%
+// M309 - Backlight off
 // M400 - Finish all moves
 // M500 - stores paramters in EEPROM
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).  
