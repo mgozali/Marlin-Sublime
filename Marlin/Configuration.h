@@ -226,7 +226,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 
   #ifdef PREHEAT_PLA
-    #define PLA_PREHEAT_HOTEND_TEMP 200 
+    #define PLA_PREHEAT_HOTEND_TEMP 190 
     #define PLA_PREHEAT_HPB_TEMP 60
     #define PLA_PREHEAT_FAN_SPEED 255	
   #endif
