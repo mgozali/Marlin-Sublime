@@ -8,7 +8,7 @@
 //User specified version info of THIS file to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to THIS file by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "2012-06-22" //Personal revision number for changes to THIS file.
+#define STRING_VERSION_CONFIG_H "2012-07-17" //Personal revision number for changes to THIS file.
 #define STRING_CONFIG_H_AUTHOR "Sublime" //Who made the changes.
 
 // This determines the communication speed of the printer
@@ -158,7 +158,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 
-#define min_software_endstops true //If true, axis won't move to coordinates less than HOME_POS.
+#define min_software_endstops false //If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
 #define X_MAX_LENGTH 100
 #define Y_MAX_LENGTH 100
@@ -175,8 +175,8 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,350}//extruder default steps for herringbone 3.3:1 (400), normal 2.7:1 (310)
-#define DEFAULT_MAX_FEEDRATE          {170, 170, 15, 55}        // (mm/sec)  30 max for herringbone gears  
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,350}//extruder default steps for herringbone 3.3:1 (390), normal 2.7:1 (320)
+#define DEFAULT_MAX_FEEDRATE          {150, 150, 15, 50}        // (mm/sec) E= 50 max for herringbone gears 55 max for normal gears 
 #define DEFAULT_MAX_ACCELERATION      {8000,8000,300,10000}     // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
@@ -197,56 +197,17 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // M501 - reads parameters from EEPROM (if you need reset them after you changed them temporarily).  
 // M502 - reverts to the default "factory settings".  You still need to store them in EEPROM afterwards if you want to.
 //define this to enable eeprom support
-//#define EEPROM_SETTINGS
+#define EEPROM_SETTINGS
 //to disable EEPROM Serial responses and decrease program space by ~1700 byte: comment this out:
 // please keep turned on if you can.
 //#define EEPROM_CHITCHAT
-
-//LCD and SD support
-//#define ULTRA_LCD  //general lcd support, also 16x2
-//#define SDSUPPORT // Enable SD Card Support in Hardware Console
-
-//#define ULTIPANEL
-#ifdef ULTIPANEL
-//#define NEWPANEL  //enable this if you have a click-encoder panel
-  #define SDSUPPORT
-  #define ULTRA_LCD
-  #define LCD_WIDTH 20
-  #define LCD_HEIGHT 4
-  
-// Preheat Constants
-
-  #define PREHEAT_PLA           // Comment out to remove PLA pre-heat option from LCD menu
-  #define PREHEAT_ABS           // Comment out to remove ABS pre-heat option from LCD menu
-
-
-#ifdef PREHEAT_PLA
-  #define PLA_PREHEAT_HOTEND_TEMP 180 
-  #define PLA_PREHEAT_HPB_TEMP 70
-  #define PLA_PREHEAT_FAN_SPEED 255		// Insert Value between 0 and 255
-#endif
-
-  #ifdef PREHEAT_ABS
-  #define ABS_PREHEAT_HOTEND_TEMP 240
-  #define ABS_PREHEAT_HPB_TEMP 100
-  #define ABS_PREHEAT_FAN_SPEED 255		// Insert Value between 0 and 255
-#endif
-
-#else //no panel but just lcd 
-  #ifdef ULTRA_LCD
-    #define LCD_WIDTH 16
-    #define LCD_HEIGHT 2    
-  #endif
-#endif
-
-
 
 #define TANTILLUS               // Tantillus special features
 
 #ifdef TANTILLUS
   #define LIGHT 128             // Default level to keep lighting at (comment out if not in use)
   #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu (comment out if not in use)
-  #define AUTO_FAN_MIN 128       // Minimum speed to keep the fan at (value 0 - 255) (comment out if not in use)
+  #define AUTO_FAN_MIN 150      // Minimum speed to keep the fan at (value 0 - 255) (comment out if not in use)
   #define MIN_FAN_TEMP 80       // Temperature to turn the fan on at
   #define MIN_FAN_TIME 45       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
   
@@ -277,8 +238,6 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
   #endif
 
 #endif
-
-
 
 // M240  Triggers a camera by emulating a Canon RC-1 Remote
 // Data from: http://www.doc-diy.net/photo/rc-1_hacked/
