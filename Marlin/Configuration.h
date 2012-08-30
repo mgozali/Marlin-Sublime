@@ -176,7 +176,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 // default settings 
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,350}//extruder default steps for herringbone 3.3:1 (390), normal 2.7:1 (320)
-#define DEFAULT_MAX_FEEDRATE          {150, 150, 15, 50}        // (mm/sec) E= 50 max for herringbone gears 55 max for normal gears 
+#define DEFAULT_MAX_FEEDRATE          {150, 150, 15, 47}        // (mm/sec) E= 50 max for herringbone gears 55 max for normal gears 
 #define DEFAULT_MAX_ACCELERATION      {8000,8000,300,10000}     // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
@@ -205,8 +205,8 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define TANTILLUS               // Tantillus special features
 
 #ifdef TANTILLUS
-  #define LIGHT 128             // Default level to keep lighting at (comment out if not in use)
-  #define BACKLIGHT 96          // Default backlight level (value 0 - 255) adjustable through LCD menu (comment out if not in use)
+  //#define LIGHT 128           // Default level to keep lighting at (comment out if not in use)
+  //#define BACKLIGHT 96        // Default backlight level (value 0 - 255) adjustable through LCD menu (comment out if not in use)
   #define AUTO_FAN_MIN 150      // Minimum speed to keep the fan at (value 0 - 255) (comment out if not in use)
   #define MIN_FAN_TEMP 80       // Temperature to turn the fan on at
   #define MIN_FAN_TIME 45       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
