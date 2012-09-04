@@ -488,9 +488,16 @@ ItemP_preheat_abs,
 #endif
 ItemP_cooldown, ItemP_home,
 #ifdef EASY_LOAD
-ItemP_load, ItemP_unload,
+ItemP_load, ItemP_unload, ItemP_purge, ItemP_retract,
 #endif
- ItemP_move, ItemP_disstep, ItemP_backlight, ItemP_light, ItemP_origin, ItemP_autostart, /*ItemP_extrude,*/};
+ ItemP_move, ItemP_disstep, 
+#ifdef BACKLIGHT
+ItemP_backlight,
+#endif
+#ifdef LIGHT
+ItemP_light, 
+#endif
+ItemP_origin, ItemP_autostart, /*ItemP_extrude,*/};
 
 //any action must not contain a ',' character anywhere, or this breaks:
 #define MENUITEM(repaint_action, click_action) \
@@ -547,6 +554,16 @@ void MainMenu::showPrepare()
 
     case ItemP_unload:
       MENUITEM(  lcdprintPGM(MSG_UNLOAD) , BLOCK;status=Sub_PrepareUnload;beepshort(); );
+      break;
+
+    case ItemP_purge:
+      MENUITEM(  lcdprintPGM(MSG_PURGE) , BLOCK;
+      enquecommand("G1 F900 E5");beepshort(); ) ;
+      break;
+
+    case ItemP_retract:
+      MENUITEM(  lcdprintPGM(MSG_RETRACT) , BLOCK;
+      enquecommand("G1 F900 E-5");beepshort(); ) ;
       break;
 #endif
     case ItemP_move:

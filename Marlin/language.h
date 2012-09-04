@@ -21,6 +21,8 @@
 	#define MSG_UNLOAD " Unload Filament"
 	#define MSG_NO " NO"
 	#define MSG_YES " YES"
+	#define MSG_PURGE " Purge 5mm"
+	#define MSG_RETRACT " Retract 5mm"
 
 	#define MSG_SD_INSERTED "Card inserted"
 	#define MSG_SD_REMOVED "Card removed"
