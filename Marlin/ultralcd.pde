@@ -703,6 +703,8 @@ void MainMenu::showUnload()
       MENUITEM(  lcdprintPGM(MSG_NO)  ,  BLOCK;status=Main_Menu;beepshort(); ) ;
       break;
      case ItemUL_Unload:
+      enquecommand("G1 F900 E15");
+      enquecommand("G1 F900 E-15");
       sprintf(unloadtmp, "G1 F900 E-%d", BOWDEN_LENGTH);
       MENUITEM(  lcdprintPGM(MSG_YES)  ,  BLOCK;enquecommand(unloadtmp);beepshort(); ) ;
       break;
