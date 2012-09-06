@@ -706,7 +706,7 @@ void MainMenu::showUnload()
 {
 #ifdef EASY_LOAD
  uint8_t line=0;
- char unloadtmp[16] = ""; 
+ char unloadtmp[32] = ""; 
  clearIfNecessary();
  for(int8_t i=lineoffset;i<lineoffset+LCD_HEIGHT;i++)
  {
@@ -719,11 +719,9 @@ void MainMenu::showUnload()
      case ItemUL_exit:
       MENUITEM(  lcdprintPGM(MSG_NO)  ,  BLOCK;status=Main_Menu;beepshort(); ) ;
       break;
-     case ItemUL_Unload:
-      enquecommand("G1 F900 E15");
-      enquecommand("G1 F900 E-15");
-      sprintf(unloadtmp, "G1 F900 E-%d", BOWDEN_LENGTH);
-      MENUITEM(  lcdprintPGM(MSG_YES)  ,  BLOCK;enquecommand(unloadtmp);beepshort(); ) ;
+     case ItemUL_Unload:     
+      snprintf(unloadtmp, 31, "G1 F900 E-%d", BOWDEN_LENGTH);
+      MENUITEM(  lcdprintPGM(MSG_YES)  ,  BLOCK;enquecommand("G1 F900 E15");enquecommand("G1 F900 E-15");enquecommand(unloadtmp);beepshort(); ) ;
       break;
    }
   line++;
