@@ -158,7 +158,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define Y_HOME_DIR -1
 #define Z_HOME_DIR -1
 
-#define min_software_endstops false //If true, axis won't move to coordinates less than HOME_POS.
+#define min_software_endstops true //If true, axis won't move to coordinates less than HOME_POS.
 #define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
 #define X_MAX_LENGTH 100
 #define Y_MAX_LENGTH 100
@@ -175,7 +175,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,350}//extruder default steps for herringbone 3.3:1 (390), normal 2.7:1 (320)
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {122.5,122.5,2514.628,450}//extruder default steps for herringbone 3.3:1 (450), normal 2.7:1 (320)
 #define DEFAULT_MAX_FEEDRATE          {150, 150, 15, 47}        // (mm/sec) E= 50 max for herringbone gears 55 max for normal gears 
 #define DEFAULT_MAX_ACCELERATION      {8000,8000,300,10000}     // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
