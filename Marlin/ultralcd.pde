@@ -894,7 +894,7 @@ void MainMenu::showAxisMove()
 }
 
 enum {ItemT_exit,ItemT_speed,ItemT_flow,ItemT_nozzle,
-#if (HEATER_BED_PIN > -1)
+#if (TEMP_SENSOR_BED > 0)
 ItemT_bed,
 #endif
 ItemT_fan};
@@ -980,7 +980,7 @@ void MainMenu::showTune()
           lcd.setCursor(13,line);lcd.print(itostr3(encoderpos));
         }
       }break;
-      #if (HEATER_BED_PIN > -1)
+      #if (TEMP_SENSOR_BED > 0)
       case ItemT_bed:
       {
         if(force_lcd_update)
@@ -1120,7 +1120,7 @@ enum {
   ItemCT_autotempactive,
   ItemCT_autotempmin,ItemCT_autotempmax,ItemCT_autotempfact,
 #endif
-#if (HEATER_BED_PIN > -1)
+#if (TEMP_SENSOR_BED > 0)
 ItemCT_bed,
 #endif  
   ItemCT_fan,
@@ -1304,7 +1304,7 @@ void MainMenu::showControlTemp()
         
       }break;  
       #endif //autotemp
-      #if (HEATER_BED_PIN > -1)
+      #if (TEMP_SENSOR_BED > 0)
       case ItemCT_bed:
       {
         if(force_lcd_update)
