@@ -118,7 +118,7 @@ void lcd_init()
     B10001,
     B01110
   };
-  byte uplevel[8]={0x04, 0x0e, 0x1f, 0x04, 0x1c, 0x00, 0x00, 0x00};//thanks joris
+  byte uplevel[8]={0x04, 0x0e, 0x1f, 0x04, 0x1c, 0x00, 0x00, 0x00}; //thanks joris
   byte refresh[8]={0x00, 0x06, 0x19, 0x18, 0x03, 0x13, 0x0c, 0x00}; //thanks joris
   byte folder [8]={0x00, 0x1c, 0x1f, 0x11, 0x11, 0x1f, 0x00, 0x00}; //thanks joris
   lcd.begin(LCD_WIDTH, LCD_HEIGHT);
@@ -488,16 +488,16 @@ ItemP_preheat_abs,
 #endif
 ItemP_cooldown, ItemP_home,
 #ifdef EASY_LOAD
-ItemP_load, ItemP_unload, ItemP_purge, ItemP_retract,
+ItemP_load, ItemP_unload, 
 #endif
- ItemP_move, ItemP_disstep, 
+ItemP_purge, ItemP_retract, ItemP_move, ItemP_disstep, 
 #ifdef BACKLIGHT
 ItemP_backlight,
 #endif
 #ifdef LIGHT
 ItemP_light, 
 #endif
-ItemP_origin, ItemP_autostart, /*ItemP_extrude,*/};
+ItemP_origin, ItemP_autostart,};
 
 //any action must not contain a ',' character anywhere, or this breaks:
 #define MENUITEM(repaint_action, click_action) \
@@ -555,7 +555,7 @@ void MainMenu::showPrepare()
     case ItemP_unload:
       MENUITEM(  lcdprintPGM(MSG_UNLOAD) , BLOCK;status=Sub_PrepareUnload;beepshort(); );
       break;
-
+#endif
     case ItemP_purge:
       MENUITEM(  lcdprintPGM(MSG_PURGE) , BLOCK;
       enquecommand("G1 F900 E5");beepshort(); ) ;
@@ -565,7 +565,7 @@ void MainMenu::showPrepare()
       MENUITEM(  lcdprintPGM(MSG_RETRACT) , BLOCK;
       enquecommand("G1 F900 E-5");beepshort(); ) ;
       break;
-#endif
+      
     case ItemP_move:
       MENUITEM(  lcdprintPGM(MSG_MOVE_AXIS) , BLOCK;status=Sub_PrepareMove;beepshort(); );
       break;
@@ -649,9 +649,6 @@ void MainMenu::showPrepare()
     case ItemP_origin:
       MENUITEM(  lcdprintPGM(MSG_SET_ORIGIN)  ,  BLOCK;enquecommand("G92 X0 Y0 Z0");beepshort(); ) ;
       break;
-//    case ItemP_extrude:
-//    MENUITEM(  lcdprintPGM(" Extrude")  ,  BLOCK;enquecommand("G92 E0");enquecommand("G1 F700 E50");beepshort(); ) ;
-//    break;
     case ItemP_autostart:
       MENUITEM(  lcdprintPGM(MSG_AUTOSTART)  ,  BLOCK;
 #ifdef SDSUPPORT
@@ -947,6 +944,7 @@ void MainMenu::showTune()
       }
       
     }break;
+    
     case ItemT_nozzle:
       {
         if(force_lcd_update)
@@ -1016,7 +1014,6 @@ void MainMenu::showTune()
       }break;
       #endif
 
-      
       case ItemT_fan:
       {
         if(force_lcd_update)
@@ -2198,7 +2195,7 @@ void MainMenu::showSD()
 }
 
 
-enum {ItemM_watch, ItemM_prepare, ItemM_control, ItemM_file };
+enum {ItemM_watch, ItemM_one, ItemM_two, ItemM_control, ItemM_file };
 void MainMenu::showMainMenu()
 {
 
@@ -2231,8 +2228,11 @@ uint8_t line=0;
       case ItemM_watch:
         MENUITEM(  lcdprintPGM(MSG_WATCH)  ,  BLOCK;status=Main_Status;beepshort(); ) ;
        break;
-      case ItemM_prepare:
-        MENUITEM(  if(!tune) lcdprintPGM(MSG_PREPARE);else  lcdprintPGM(MSG_TUNE); ,  BLOCK;status=Main_Prepare;beepshort(); ) ;
+      case ItemM_one:
+        MENUITEM(  if(!tune) lcdprintPGM(MSG_PREPARE);else  lcdprintPGM(MSG_TUNE); ,  BLOCK;status=Main_Prepare1;beepshort(); ) ;
+      break;
+      case ItemM_two:
+        MENUITEM(  if(!tune) lcdprintPGM(MSG_TUNE);else  lcdprintPGM(MSG_PREPARE); ,  BLOCK;status=Main_Prepare2;beepshort(); ) ;
       break;
        
       case ItemM_control:
@@ -2283,7 +2283,7 @@ uint8_t line=0;
     }
   line++;
   }
-  updateActiveLines(3,encoderpos);
+  updateActiveLines(4,encoderpos);
 }
 
 void MainMenu::update()
@@ -2340,7 +2340,7 @@ void MainMenu::update()
         showMainMenu();
         linechanging=false;
       }break;
-      case Main_Prepare: 
+      case Main_Prepare1: 
       {
         if(tune)
         {
@@ -2348,7 +2348,18 @@ void MainMenu::update()
         }
         else
         {
-          showPrepare(); 
+          showPrepare();
+        }
+      }break;
+      case Main_Prepare2: 
+      {
+        if(tune)
+        {
+          showPrepare();
+        }
+        else
+        {
+          showTune();
         }
       }break;
       case Sub_PrepareMove:
