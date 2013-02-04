@@ -497,7 +497,9 @@ ItemP_backlight,
 #ifdef LIGHT
 ItemP_light, 
 #endif
-ItemP_origin, ItemP_autostart,};
+ItemP_origin, 
+/*ItemP_autostart,*/
+};
 
 //any action must not contain a ',' character anywhere, or this breaks:
 #define MENUITEM(repaint_action, click_action) \
@@ -649,19 +651,19 @@ void MainMenu::showPrepare()
     case ItemP_origin:
       MENUITEM(  lcdprintPGM(MSG_SET_ORIGIN)  ,  BLOCK;enquecommand("G92 X0 Y0 Z0");beepshort(); ) ;
       break;
-    case ItemP_autostart:
-      MENUITEM(  lcdprintPGM(MSG_AUTOSTART)  ,  BLOCK;
-#ifdef SDSUPPORT
-          card.lastnr=0;card.setroot();card.checkautostart(true);
-#endif
-          beepshort(); ) ;
-      break;   
+/*    case ItemP_autostart:*/
+/*      MENUITEM(  lcdprintPGM(MSG_AUTOSTART)  ,  BLOCK;*/
+/*#ifdef SDSUPPORT*/
+/*          card.lastnr=0;card.setroot();card.checkautostart(true);*/
+/*#endif*/
+/*          beepshort(); ) ;*/
+/*      break;   */
         default:   
       break;
   }
   line++;
  }
- updateActiveLines(ItemP_autostart,encoderpos);
+ updateActiveLines(ItemP_origin,encoderpos);
 #endif
 }
 
