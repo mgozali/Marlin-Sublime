@@ -115,7 +115,7 @@
 //this prevents dangerous Extruder moves, i.e. if the temperature is under the limit
 //can be software-disabled for whatever purposes by
 #define PREVENT_DANGEROUS_EXTRUDE
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 150
 
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
@@ -207,7 +207,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #ifdef TANTILLUS
   //#define LIGHT 128           // Default level to keep lighting at (comment out if not in use)
   //#define BACKLIGHT 96        // Default backlight level (value 0 - 255) adjustable through LCD menu (comment out if not in use)
-  #define AUTO_FAN_MIN 150      // Minimum speed to keep the fan at (value 0 - 255) (comment out if not in use)
+  #define AUTO_FAN_MIN 8      // Minimum speed to keep the fan at (value 0 - 255) (comment out if not in use)
   #define MIN_FAN_TEMP 80       // Temperature to turn the fan on at
   #define MIN_FAN_TIME 45       // Time in seconds to keep the fan on after temperature drops below MIN_FAN_TEMP
   
