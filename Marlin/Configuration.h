@@ -219,7 +219,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
   #define LCD_HEIGHT 2
 
   #define EASY_LOAD             // Add load/unload to LCD control panel ***caution*** Allows long extrusion distances
-  #define BOWDEN_LENGTH 850     // Sets max extrusion length ***caution*** Allows long extrusion distances
+  #define BOWDEN_LENGTH 650     // Sets max extrusion length ***caution*** Allows long extrusion distances
 
   #define PREHEAT_PLA           // Comment out to remove PLA pre-heat option from LCD menu
 //#define PREHEAT_ABS           // Comment out to remove ABS pre-heat option from LCD menu
